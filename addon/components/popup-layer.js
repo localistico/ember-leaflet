@@ -134,7 +134,9 @@ export default class PopupLayer extends DivOverlayLayer {
    */
   @action
   closePopup() {
-    this._layer._close();
+    if (this._layer._close && 'function' === typeof this._layer._close) {
+      this._layer._close();
+    }
   }
 
   @action
